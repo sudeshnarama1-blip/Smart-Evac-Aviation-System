@@ -1,0 +1,1638 @@
+/* ==========================================================
+   GLOBAL
+========================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  background: #101214;
+  color: #e8ebed;
+
+  font-family:
+    Inter,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+}
+
+button {
+  font-family: inherit;
+}
+
+
+/* ==========================================================
+   APP
+========================================================== */
+
+.evac-app {
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 55% 45%,
+      rgba(255,255,255,0.025),
+      transparent 45%
+    ),
+
+    #101214;
+}
+
+
+/* ==========================================================
+   TOP BAR
+========================================================== */
+
+.topbar {
+  height: 68px;
+
+  padding: 0 24px;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+
+  align-items: center;
+
+  border-bottom:
+    1px solid #2a2e31;
+
+  background: #151719;
+}
+
+
+.brand {
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+}
+
+
+.brand-symbol {
+  width: 34px;
+  height: 34px;
+
+  display: grid;
+  place-items: center;
+
+  border:
+    1px solid #555b5f;
+
+  border-radius: 5px;
+
+  color: #f0f2f3;
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+
+.brand-text strong {
+  display: block;
+
+  font-size: 11px;
+
+  letter-spacing: 0.14em;
+}
+
+
+.brand-text span {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #656c71;
+
+  font-size: 7px;
+
+  letter-spacing: 0.16em;
+}
+
+
+.top-center {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: #6c7378;
+
+  font-size: 8px;
+
+  letter-spacing: 0.12em;
+}
+
+
+.building-code {
+  color: #b9bec1;
+}
+
+
+.separator {
+  color: #3f4548;
+}
+
+
+.system-state {
+  justify-self: end;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: #8a9297;
+
+  font-size: 8px;
+
+  letter-spacing: 0.12em;
+}
+
+
+.state-light {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #42cb83;
+
+  box-shadow:
+    0 0 7px
+    rgba(66,203,131,0.55);
+}
+
+
+.state-light.emergency {
+  background: #ff4d4d;
+
+  box-shadow:
+    0 0 12px
+    rgba(255,77,77,0.8);
+
+  animation:
+    emergencyPulse 0.8s infinite alternate;
+}
+
+
+@keyframes emergencyPulse {
+
+  from {
+    opacity: 0.5;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+
+/* ==========================================================
+   MAIN LAYOUT
+========================================================== */
+
+.main-layout {
+  display: grid;
+
+  grid-template-columns:
+    190px
+    minmax(500px, 1fr)
+    240px;
+
+  height:
+    calc(100vh - 68px);
+}
+
+
+/* ==========================================================
+   SIDEBAR
+========================================================== */
+
+.sidebar {
+  display: flex;
+
+  flex-direction: column;
+
+  padding: 24px 13px;
+
+  border-right:
+    1px solid #2a2e31;
+
+  background: #151719;
+}
+
+
+.sidebar-section {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+
+.section-label {
+  margin:
+    0 8px
+    9px;
+
+  color: #5f676c;
+
+  font-size: 7px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.15em;
+}
+
+
+.scenario-button {
+  position: relative;
+
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding:
+    10px 9px;
+
+  border: 0;
+
+  border-radius: 5px;
+
+  background: transparent;
+
+  color: #7c8489;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  font-size: 10px;
+
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+
+
+.scenario-button:hover {
+  background: #202326;
+
+  color: #e7eaeb;
+}
+
+
+.scenario-button.active {
+  background: #25292c;
+
+  color: #f1f3f4;
+}
+
+
+.scenario-button.danger-active {
+  box-shadow:
+    inset 2px 0 0 #ff4f4f;
+}
+
+
+.scenario-icon {
+  width: 19px;
+
+  text-align: center;
+
+  font-size: 12px;
+}
+
+
+.active-marker {
+  position: absolute;
+
+  right: 9px;
+
+  color: #42d58a;
+
+  font-size: 6px;
+}
+
+
+.sidebar-divider {
+  height: 1px;
+
+  margin:
+    21px 7px;
+
+  background: #2a2e31;
+}
+
+
+/* ==========================================================
+   VIEW BUTTONS
+========================================================== */
+
+.view-option {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding:
+    10px 9px;
+
+  border:
+    1px solid transparent;
+
+  border-radius: 5px;
+
+  background: transparent;
+
+  color: #737b80;
+
+  cursor: pointer;
+
+  text-align: left;
+
+  font-size: 8px;
+
+  letter-spacing: 0.08em;
+}
+
+
+.view-option:hover {
+  background: #202326;
+
+  color: #e8ebed;
+}
+
+
+.view-option.selected {
+  border-color: #363c40;
+
+  background: #202326;
+
+  color: #f0f2f3;
+}
+
+
+.view-icon {
+  width: 17px;
+
+  color: #90989d;
+
+  font-size: 14px;
+}
+
+
+/* ==========================================================
+   SIDEBAR BOTTOM
+========================================================== */
+
+.sidebar-bottom {
+  margin-top: auto;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+
+.start-button,
+.reset-button {
+  width: 100%;
+
+  padding: 11px;
+
+  border-radius: 5px;
+
+  cursor: pointer;
+
+  font-size: 8px;
+
+  letter-spacing: 0.1em;
+}
+
+
+.start-button {
+  border: 0;
+
+  background: #e9ecee;
+
+  color: #121416;
+}
+
+
+.start-button:hover {
+  background: white;
+}
+
+
+.reset-button {
+  border:
+    1px solid #353a3d;
+
+  background: transparent;
+
+  color: #727a7f;
+}
+
+
+.reset-button:hover {
+  background: #202326;
+
+  color: #cdd1d3;
+}
+
+
+/* ==========================================================
+   BUILDING AREA
+========================================================== */
+
+.building-area {
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  background: #111315;
+}
+
+
+.building-header {
+  height: 82px;
+
+  padding:
+    17px 24px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  border-bottom:
+    1px solid #292d30;
+}
+
+
+.building-overline {
+  color: #626a6f;
+
+  font-size: 7px;
+
+  letter-spacing: 0.16em;
+}
+
+
+.building-header h1 {
+  margin:
+    6px 0 0;
+
+  font-size: 16px;
+
+  font-weight: 500;
+
+  letter-spacing: -0.02em;
+}
+
+
+.view-mode-label {
+  padding:
+    7px 10px;
+
+  border:
+    1px solid #353a3e;
+
+  border-radius: 4px;
+
+  color: #788085;
+
+  font-size: 7px;
+
+  letter-spacing: 0.12em;
+}
+
+
+/* ==========================================================
+   BUILDING STAGE
+========================================================== */
+
+.building-stage {
+  position: relative;
+
+  flex: 1;
+
+  min-height: 0;
+
+  overflow: hidden;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #1b1e20,
+      #111315 70%
+    );
+}
+
+
+/* ==========================================================
+   2D FLOOR PLAN
+========================================================== */
+
+.floor-plan {
+  position: relative;
+
+  width:
+    min(900px, 90%);
+
+  aspect-ratio:
+    1.65;
+
+  border:
+    2px solid #555d60;
+
+  background: #dfe2df;
+
+  box-shadow:
+    0 30px 90px
+    rgba(0,0,0,0.45);
+
+  overflow: hidden;
+}
+
+
+/* ==========================================================
+   ARCHITECTURAL GRID
+========================================================== */
+
+.architectural-grid {
+  position: absolute;
+
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(70,76,79,0.08) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(70,76,79,0.08) 1px,
+      transparent 1px
+    );
+
+  background-size:
+    20px 20px;
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+
+/* ==========================================================
+   ROOMS
+========================================================== */
+
+.floor-room {
+  position: absolute;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background:
+    rgba(242,244,241,0.88);
+
+  border:
+    2px solid #5c6468;
+
+  color: #6d7477;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+
+  z-index: 2;
+}
+
+
+.floor-room.room-a {
+  left: 0;
+  top: 0;
+
+  width: 31%;
+  height: 43%;
+}
+
+
+.floor-room.room-b {
+  left: 0;
+  bottom: 0;
+
+  width: 31%;
+  height: 43%;
+}
+
+
+.floor-room.room-c {
+  right: 0;
+  top: 0;
+
+  width: 31%;
+  height: 43%;
+}
+
+
+.floor-room.room-d {
+  right: 0;
+  bottom: 0;
+
+  width: 31%;
+  height: 43%;
+}
+
+
+/* ==========================================================
+   CENTRAL CORRIDOR
+========================================================== */
+
+.main-corridor {
+  position: absolute;
+
+  left: 31%;
+  right: 31%;
+
+  top: 43%;
+  bottom: 43%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #d1d5d2;
+
+  border-top:
+    2px solid #5c6468;
+
+  border-bottom:
+    2px solid #5c6468;
+
+  color: #7a8184;
+
+  font-size: 7px;
+
+  letter-spacing: 0.18em;
+
+  z-index: 2;
+}
+
+
+/* ==========================================================
+   VERTICAL CORRIDOR
+========================================================== */
+
+.vertical-corridor {
+  position: absolute;
+
+  left: 48.5%;
+
+  top: 43%;
+
+  width: 3%;
+
+  height: 57%;
+
+  border-left:
+    2px solid #5c6468;
+
+  border-right:
+    2px solid #5c6468;
+
+  background:
+    rgba(210,213,210,0.65);
+
+  z-index: 2;
+}
+
+
+/* ==========================================================
+   EXITS
+========================================================== */
+
+.floor-exit {
+  position: absolute;
+
+  top: 46.5%;
+
+  z-index: 10;
+
+  padding:
+    6px 9px;
+
+  background: #42c982;
+
+  color: #082016;
+
+  font-size: 7px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.1em;
+}
+
+
+.exit-left {
+  left: 0;
+}
+
+
+.exit-right {
+  right: 0;
+}
+
+
+.floor-exit.unsafe {
+  background: #e54b4b;
+
+  color: white;
+}
+
+
+/* ==========================================================
+   STAIRS
+========================================================== */
+
+.stair-area {
+  position: absolute;
+
+  left: 42%;
+
+  bottom: 4%;
+
+  width: 15%;
+
+  height: 18%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border:
+    2px solid #596164;
+
+  background: #d4d7d4;
+
+  color: #676e71;
+
+  font-size: 7px;
+
+  letter-spacing: 0.1em;
+
+  z-index: 4;
+}
+
+
+.stair-lines {
+  width: 65%;
+
+  margin-top: 5px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+
+.stair-lines i {
+  display: block;
+
+  height: 2px;
+
+  background: #777e81;
+}
+
+
+/* ==========================================================
+   REFUGE
+========================================================== */
+
+.refuge-area {
+  position: absolute;
+
+  left: 42%;
+
+  bottom: 0;
+
+  transform:
+    translateY(100%);
+
+  color: #5e6669;
+
+  font-size: 7px;
+
+  letter-spacing: 0.1em;
+
+  z-index: 4;
+}
+
+
+/* ==========================================================
+   ROUTE
+========================================================== */
+
+.route-layer {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 8;
+
+  pointer-events: none;
+}
+
+
+.evacuation-route {
+  filter:
+    drop-shadow(
+      0 0 3px
+      rgba(57,217,138,0.9)
+    );
+
+  animation:
+    routeFlow 0.8s linear infinite;
+}
+
+
+@keyframes routeFlow {
+
+  to {
+    stroke-dashoffset: -7;
+  }
+
+}
+
+
+/* ==========================================================
+   PEOPLE
+========================================================== */
+
+.floor-person {
+  position: absolute;
+
+  width: 14px;
+  height: 21px;
+
+  transform:
+    translate(-50%, -50%);
+
+  z-index: 25;
+
+  transition:
+    left 0.08s linear,
+    top 0.08s linear;
+}
+
+
+.person-head {
+  width: 7px;
+  height: 7px;
+
+  margin: auto;
+
+  border-radius: 50%;
+
+  background: #30363a;
+}
+
+
+.person-body {
+  width: 11px;
+  height: 12px;
+
+  margin:
+    2px auto 0;
+
+  border-radius:
+    4px 4px 3px 3px;
+
+  background: #596166;
+}
+
+
+.floor-person.evacuating
+.person-body {
+  background: #d69c36;
+
+  box-shadow:
+    0 0 6px
+    rgba(214,156,54,0.5);
+}
+
+
+.floor-person.safe
+.person-body {
+  background: #35a86c;
+}
+
+
+.floor-person.trapped
+.person-body {
+  background: #df4141;
+}
+
+
+.floor-person.avoiding
+.person-body {
+  background: #ed704b;
+}
+
+
+.person-arrow {
+  position: absolute;
+
+  left: 12px;
+  top: 4px;
+
+  color: #269f65;
+
+  font-size: 10px;
+
+  font-weight: 900;
+}
+
+
+/* ==========================================================
+   DOORS
+========================================================== */
+
+.door-visual {
+  position: absolute;
+
+  width: 17px;
+  height: 5px;
+
+  z-index: 20;
+}
+
+
+.door-visual span {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: 2px;
+}
+
+
+.door-open span {
+  background: #38c77b;
+
+  box-shadow:
+    0 0 6px
+    rgba(56,199,123,0.5);
+}
+
+
+.door-closed span {
+  background: #e14b4b;
+
+  box-shadow:
+    0 0 7px
+    rgba(225,75,75,0.6);
+}
+
+
+.door-left {
+  left: 31%;
+  top: 48%;
+}
+
+
+.door-right {
+  right: 31%;
+  top: 48%;
+}
+
+
+.door-room-d {
+  right: 31%;
+  top: 67%;
+}
+
+
+/* ==========================================================
+   HAZARDS
+========================================================== */
+
+.hazard-zone {
+  position: absolute;
+
+  transform:
+    translate(-50%, -50%);
+
+  z-index: 22;
+
+  width: 70px;
+  height: 70px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 2px;
+
+  font-size: 7px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+
+  animation:
+    hazardPulse 1s infinite alternate;
+}
+
+
+.hazard-icon {
+  font-size: 24px;
+}
+
+
+.hazard-fire {
+  background:
+    rgba(255,70,40,0.2);
+
+  border:
+    2px solid
+    rgba(255,70,40,0.65);
+
+  color: #b52e20;
+
+  box-shadow:
+    0 0 25px
+    rgba(255,70,40,0.35);
+}
+
+
+.hazard-flood {
+  background:
+    rgba(40,140,220,0.22);
+
+  border:
+    2px solid
+    rgba(40,140,220,0.7);
+
+  color: #1267a8;
+}
+
+
+.hazard-chemical {
+  background:
+    rgba(150,190,50,0.2);
+
+  border:
+    2px solid
+    rgba(130,170,40,0.7);
+
+  color: #536e17;
+}
+
+
+.hazard-earthquake {
+  background:
+    rgba(210,145,45,0.2);
+
+  border:
+    2px solid
+    rgba(190,125,30,0.7);
+
+  color: #795019;
+}
+
+
+.hazard-security {
+  background:
+    rgba(230,50,50,0.22);
+
+  border:
+    2px solid
+    rgba(230,50,50,0.75);
+
+  color: #9f2020;
+
+  box-shadow:
+    0 0 25px
+    rgba(230,50,50,0.35);
+}
+
+
+@keyframes hazardPulse {
+
+  from {
+    transform:
+      translate(-50%, -50%)
+      scale(0.94);
+  }
+
+  to {
+    transform:
+      translate(-50%, -50%)
+      scale(1.05);
+  }
+
+}
+
+
+/* ==========================================================
+   NORTH / FLOOR LABEL
+========================================================== */
+
+.north-marker {
+  position: absolute;
+
+  right: 12px;
+  top: 10px;
+
+  width: 23px;
+  height: 23px;
+
+  display: grid;
+
+  place-items: center;
+
+  border:
+    1px solid #7c8386;
+
+  color: #646c70;
+
+  font-size: 8px;
+
+  z-index: 30;
+}
+
+
+.floor-label {
+  position: absolute;
+
+  left: 12px;
+  top: 10px;
+
+  color: #6b7376;
+
+  font-size: 7px;
+
+  letter-spacing: 0.14em;
+
+  z-index: 30;
+}
+
+
+/* ==========================================================
+   3D VIEW
+========================================================== */
+
+.building-3d {
+  width: 100%;
+  height: 100%;
+
+  min-height: 400px;
+}
+
+
+/* ==========================================================
+   METRICS
+========================================================== */
+
+.metrics-bar {
+  height: 65px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, 1fr);
+
+  border-top:
+    1px solid #292d30;
+
+  background: #151719;
+}
+
+
+.metric {
+  padding:
+    12px 18px;
+
+  border-right:
+    1px solid #292d30;
+}
+
+
+.metric span {
+  display: block;
+
+  color: #626a6f;
+
+  font-size: 7px;
+
+  letter-spacing: 0.13em;
+}
+
+
+.metric strong {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #dfe3e5;
+
+  font-size: 16px;
+
+  font-weight: 500;
+}
+
+
+.green-text {
+  color: #42cb83 !important;
+}
+
+
+.red-text {
+  color: #f04e4e !important;
+}
+
+
+/* ==========================================================
+   RIGHT PANEL
+========================================================== */
+
+.right-panel {
+  padding: 16px 12px;
+
+  border-left:
+    1px solid #2a2e31;
+
+  background: #151719;
+
+  overflow-y: auto;
+}
+
+
+.right-card {
+  padding:
+    15px 13px;
+
+  margin-bottom: 9px;
+
+  border:
+    1px solid #292e31;
+
+  border-radius: 5px;
+
+  background: #181a1c;
+}
+
+
+.card-label {
+  color: #5f676c;
+
+  font-size: 7px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.14em;
+}
+
+
+.event-name {
+  margin-top: 10px;
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.02em;
+}
+
+
+.event-status {
+  margin-top: 9px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  color: #777f84;
+
+  font-size: 7px;
+
+  letter-spacing: 0.08em;
+}
+
+
+.tiny-light {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+}
+
+
+.tiny-light.green {
+  background: #42cb83;
+}
+
+
+.tiny-light.red {
+  background: #ef4c4c;
+
+  box-shadow:
+    0 0 7px
+    rgba(239,76,76,0.7);
+}
+
+
+.route-status {
+  margin-top: 11px;
+
+  font-size: 9px;
+
+  letter-spacing: 0.04em;
+}
+
+
+.right-card p {
+  margin:
+    9px 0 0;
+
+  color: #71797e;
+
+  font-size: 9px;
+
+  line-height: 1.6;
+}
+
+
+/* ==========================================================
+   OCCUPANTS
+========================================================== */
+
+.occupant-number {
+  margin-top: 8px;
+
+  font-size: 34px;
+
+  font-weight: 400;
+
+  letter-spacing: -0.06em;
+}
+
+
+.occupant-caption {
+  color: #656d72;
+
+  font-size: 7px;
+
+  letter-spacing: 0.12em;
+}
+
+
+.occupant-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 5px;
+
+  margin-top: 13px;
+}
+
+
+.occupant-grid div {
+  padding:
+    8px 5px;
+
+  border:
+    1px solid #292e31;
+
+  border-radius: 4px;
+
+  text-align: center;
+}
+
+
+.occupant-grid strong {
+  display: block;
+
+  font-size: 14px;
+}
+
+
+.occupant-grid span {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #636b70;
+
+  font-size: 6px;
+
+  letter-spacing: 0.08em;
+}
+
+
+/* ==========================================================
+   DOOR STATUS
+========================================================== */
+
+.door-status-row {
+  display: flex;
+
+  justify-content: space-between;
+
+  padding:
+    8px 0;
+
+  border-bottom:
+    1px solid #252a2d;
+
+  color: #7b8388;
+
+  font-size: 9px;
+}
+
+
+.door-status-row:last-child {
+  border-bottom: 0;
+}
+
+
+/* ==========================================================
+   LEGEND
+========================================================== */
+
+.legend-card {
+  margin-top: auto;
+}
+
+
+.legend-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin-top: 9px;
+
+  color: #777f84;
+
+  font-size: 8px;
+}
+
+
+.legend-symbol {
+  width: 18px;
+
+  text-align: center;
+
+  color: #4f585d;
+}
+
+
+.route-symbol {
+  color: #39d98a;
+
+  font-weight: 900;
+}
+
+
+.exit-symbol {
+  color: #42cb83;
+
+  font-weight: 900;
+}
+
+
+.hazard-symbol {
+  color: #ed5555;
+
+  font-weight: 900;
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width: 1150px) {
+
+  .main-layout {
+    grid-template-columns:
+      170px
+      minmax(450px, 1fr);
+  }
+
+  .right-panel {
+    display: none;
+  }
+
+}
+
+
+@media (max-width: 800px) {
+
+  .topbar {
+    grid-template-columns: 1fr;
+
+    height: auto;
+
+    gap: 10px;
+
+    padding: 14px 18px;
+  }
+
+  .top-center,
+  .system-state {
+    display: none;
+  }
+
+
+  .main-layout {
+    display: block;
+
+    height: auto;
+  }
+
+
+  .sidebar {
+    border-right: 0;
+
+    border-bottom:
+      1px solid #2a2e31;
+  }
+
+
+  .building-stage {
+    height: 600px;
+  }
+
+
+  .metrics-bar {
+    grid-template-columns:
+      repeat(3, 1fr);
+
+    height: auto;
+  }
+
+}

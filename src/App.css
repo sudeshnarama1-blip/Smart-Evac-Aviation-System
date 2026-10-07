@@ -1,0 +1,1134 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #111315;
+  color: #e9ecef;
+  font-family: Inter, Arial, sans-serif;
+}
+
+button {
+  font: inherit;
+}
+
+.evac-app {
+  min-height: 100vh;
+}
+
+
+/* ================================
+   TOP BAR
+================================ */
+
+.topbar {
+  height: 70px;
+
+  padding: 0 26px;
+
+  border-bottom: 1px solid #292d30;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #151719;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-mark {
+  width: 34px;
+  height: 34px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid #555b60;
+  border-radius: 5px;
+
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.brand strong {
+  display: block;
+
+  font-size: 12px;
+  letter-spacing: 0.12em;
+}
+
+.brand span {
+  display: block;
+
+  margin-top: 3px;
+
+  font-size: 8px;
+  color: #6e757a;
+  letter-spacing: 0.12em;
+}
+
+.top-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 9px;
+  letter-spacing: 0.12em;
+}
+
+.pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.pulse.green {
+  background: #55c98a;
+}
+
+.pulse.red {
+  background: #ff4545;
+  box-shadow: 0 0 12px #ff4545;
+}
+
+
+/* ================================
+   MAIN
+================================ */
+
+.main-layout {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+
+  height: calc(100vh - 70px);
+}
+
+
+/* ================================
+   CONTROL RAIL
+================================ */
+
+.control-rail {
+  padding: 25px 14px;
+
+  border-right: 1px solid #292d30;
+
+  background: #151719;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.rail-title {
+  margin: 0 8px 10px;
+
+  color: #686f74;
+
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.scenario {
+  border: 0;
+  background: transparent;
+
+  color: #858c91;
+
+  padding: 10px 9px;
+
+  text-align: left;
+
+  border-radius: 5px;
+
+  cursor: pointer;
+
+  font-size: 11px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.scenario span {
+  width: 20px;
+  text-align: center;
+}
+
+.scenario:hover {
+  background: #202326;
+  color: white;
+}
+
+.scenario.active {
+  background: #24282b;
+  color: white;
+}
+
+.scenario.active.fire {
+  border-left: 2px solid #ff5b50;
+}
+
+.scenario.active.flood {
+  border-left: 2px solid #55aaff;
+}
+
+.scenario.active.chemical {
+  border-left: 2px solid #b9df5b;
+}
+
+.scenario.active.earthquake {
+  border-left: 2px solid #e1a34e;
+}
+
+.scenario.active.security {
+  border-left: 2px solid #ff4545;
+}
+
+.rail-divider {
+  height: 1px;
+  background: #292d30;
+
+  margin: 20px 7px;
+}
+
+.view-button {
+  border: 1px solid transparent;
+  background: transparent;
+
+  color: #72797e;
+
+  padding: 9px;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  border-radius: 4px;
+
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.view-button.active {
+  color: white;
+  border-color: #3a3f43;
+  background: #202326;
+}
+
+.rail-bottom {
+  margin-top: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.start,
+.reset {
+  padding: 11px;
+
+  border-radius: 5px;
+
+  cursor: pointer;
+
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.start {
+  background: #e9ecef;
+  color: #111315;
+
+  border: 0;
+}
+
+.reset {
+  background: transparent;
+  color: #777e83;
+
+  border: 1px solid #303538;
+}
+
+
+/* ================================
+   BUILDING SECTION
+================================ */
+
+.building-section {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  background: #111315;
+}
+
+.building-header {
+  height: 82px;
+
+  padding: 18px 25px;
+
+  border-bottom: 1px solid #292d30;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.building-header span {
+  color: #666d72;
+
+  font-size: 8px;
+  letter-spacing: 0.13em;
+}
+
+.building-header h1 {
+  margin: 5px 0 0;
+
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.view-indicator {
+  padding: 7px 10px;
+
+  border: 1px solid #34393d;
+  border-radius: 4px;
+
+  font-size: 8px;
+  color: #858c91;
+  letter-spacing: 0.1em;
+}
+
+
+/* ================================
+   BUILDING STAGE
+================================ */
+
+.building-stage {
+  position: relative;
+
+  flex: 1;
+
+  min-height: 0;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #1b1e20 0,
+      #111315 70%
+    );
+}
+
+
+/* ================================
+   FLOOR PLAN
+================================ */
+
+.floor-plan-new {
+  position: relative;
+
+  width: min(900px, 90%);
+  aspect-ratio: 1.55;
+
+  margin: auto;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  border: 2px solid #687077;
+
+  background: #dfe2df;
+
+  box-shadow:
+    0 25px 80px rgba(0,0,0,0.45);
+
+  overflow: hidden;
+}
+
+
+/* ROOMS */
+
+.room {
+  position: absolute;
+
+  background: #e7e9e6;
+
+  border: 2px solid #62696d;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #6b7275;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+}
+
+.room-a {
+  left: 0;
+  top: 0;
+  width: 31%;
+  height: 43%;
+}
+
+.room-b {
+  left: 0;
+  bottom: 0;
+  width: 31%;
+  height: 43%;
+}
+
+.room-c {
+  right: 0;
+  top: 0;
+  width: 31%;
+  height: 43%;
+}
+
+.room-d {
+  right: 0;
+  bottom: 0;
+  width: 31%;
+  height: 43%;
+}
+
+
+/* CENTRAL CORRIDOR */
+
+.corridor {
+  position: absolute;
+
+  left: 31%;
+  right: 31%;
+
+  top: 43%;
+  bottom: 43%;
+
+  background: #d2d5d2;
+
+  border-top: 2px solid #62696d;
+  border-bottom: 2px solid #62696d;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #7a8083;
+
+  font-size: 8px;
+  letter-spacing: 0.14em;
+}
+
+
+/* EXITS */
+
+.exit {
+  position: absolute;
+
+  bottom: 45%;
+
+  padding: 5px 8px;
+
+  background: #55c98a;
+
+  color: #092015;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  z-index: 4;
+}
+
+.exit-a {
+  left: -1px;
+}
+
+.exit-b {
+  right: -1px;
+}
+
+
+/* PEOPLE */
+
+.floor-person {
+  position: absolute;
+
+  width: 13px;
+  height: 20px;
+
+  transform: translate(-50%, -50%);
+
+  z-index: 20;
+
+  transition:
+    left 0.08s linear,
+    top 0.08s linear;
+}
+
+.floor-person .person-head {
+  width: 6px;
+  height: 6px;
+
+  margin: auto;
+
+  border-radius: 50%;
+
+  background: #303438;
+}
+
+.floor-person .person-body {
+  width: 10px;
+  height: 11px;
+
+  margin: 2px auto 0;
+
+  border-radius: 4px;
+
+  background: #50575b;
+}
+
+.floor-person.evacuating .person-body {
+  background: #d69c35;
+}
+
+.floor-person.safe .person-body {
+  background: #38a86d;
+}
+
+.floor-person.trapped .person-body {
+  background: #e33f3f;
+}
+
+
+/* HAZARD */
+
+.floor-hazard {
+  position: absolute;
+
+  transform: translate(-50%, -50%);
+
+  z-index: 15;
+
+  font-size: 34px;
+
+  filter: drop-shadow(
+    0 0 12px rgba(255,50,30,0.5)
+  );
+
+  animation: hazard 0.8s infinite alternate;
+}
+
+@keyframes hazard {
+  to {
+    transform:
+      translate(-50%, -50%)
+      scale(1.1);
+  }
+}
+
+
+/* ================================
+   3D VIEW
+================================ */
+
+.building-3d {
+  width: 100%;
+  height: 100%;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #202427,
+      #111315 70%
+    );
+}
+
+
+/* ================================
+   FOOTER
+================================ */
+
+.building-footer {
+  height: 66px;
+
+  border-top: 1px solid #292d30;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  background: #151719;
+}
+
+.building-footer div {
+  padding: 13px 20px;
+
+  border-right: 1px solid #292d30;
+}
+
+.building-footer span {
+  display: block;
+
+  color: #656d72;
+
+  font-size: 7px;
+  letter-spacing: 0.12em;
+}
+
+.building-footer strong {
+  display: block;
+
+  margin-top: 5px;
+
+  font-size: 16px;
+}
+
+.building-footer .safe {
+  color: #55c98a;
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 800px) {
+
+  .main-layout {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .control-rail {
+    border-right: 0;
+    border-bottom: 1px solid #292d30;
+  }
+
+  .rail-bottom {
+    margin-top: 20px;
+  }
+
+  .building-stage {
+    height: 600px;
+  }
+
+}
+
+/* ==========================================================
+   2D FLOOR PLAN (SVG — same coordinates as the simulation)
+========================================================== */
+
+.plan-svg {
+  width: 100%;
+  height: 100%;
+  max-width: 1100px;
+  padding: 18px;
+  display: block;
+}
+
+.plan-floor {
+  fill: #dfe2df;
+}
+
+.plan-wall {
+  fill: none;
+  stroke: #4c5458;
+  stroke-width: 4;
+}
+
+.plan-core {
+  stroke: #5c6468;
+  stroke-width: 1.5;
+}
+
+.plan-corridor {
+  fill: #cfd4d1;
+  stroke: #5c6468;
+  stroke-width: 2;
+}
+
+.plan-room {
+  fill: rgba(243, 245, 242, 0.95);
+  stroke: #5c6468;
+  stroke-width: 2.5;
+}
+
+.plan-room.hazard {
+  fill: rgba(255, 228, 220, 0.95);
+}
+
+.plan-step {
+  stroke: #7a8285;
+  stroke-width: 2;
+}
+
+.plan-refuge {
+  fill: rgba(66, 201, 130, 0.14);
+  stroke: #3a9e6a;
+  stroke-width: 2.5;
+  stroke-dasharray: 8 4;
+}
+
+.plan-label {
+  fill: #6d7477;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.plan-label.small {
+  font-size: 9px;
+  font-weight: 600;
+}
+
+.plan-label.room {
+  font-size: 11px;
+}
+
+.plan-label.muted {
+  fill: #8a9194;
+  font-size: 9px;
+}
+
+.plan-label.refuge {
+  fill: #2f8b5b;
+  font-size: 9px;
+}
+
+.plan-label.tag {
+  fill: #a7adb0;
+  font-size: 10px;
+}
+
+.plan-north {
+  fill: none;
+  stroke: #7c8386;
+}
+
+/* ---------- exits ---------- */
+
+.plan-exit {
+  fill: #42c982;
+  transition: fill 0.3s;
+}
+
+.plan-exit.blocked {
+  fill: #e54b4b;
+}
+
+.plan-exit-label {
+  fill: #06200f;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-anchor: middle;
+}
+
+.plan-exit-label.blocked {
+  fill: #fff;
+}
+
+.plan-exit-sub {
+  fill: #0b3a20;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-anchor: middle;
+}
+
+.plan-exit-sub.blocked {
+  fill: #ffe1e1;
+}
+
+.plan-exit-cross line {
+  stroke: rgba(255, 255, 255, 0.55);
+  stroke-width: 2;
+}
+
+/* ---------- doors ---------- */
+
+.plan-door {
+  fill: #38c77b;
+  stroke: #1f6e45;
+  stroke-width: 1;
+}
+
+.plan-door.closed {
+  fill: #e14b4b;
+  stroke: #8a1f1f;
+}
+
+/* ---------- routes (moving LED-style guidance) ---------- */
+
+.plan-route-glow {
+  fill: none;
+  stroke: rgba(57, 217, 138, 0.28);
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.plan-route {
+  fill: none;
+  stroke: #1faa63;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 2 10;
+  animation: planRouteFlow 0.7s linear infinite;
+}
+
+@keyframes planRouteFlow {
+  to {
+    stroke-dashoffset: -12;
+  }
+}
+
+/* ---------- hazards ---------- */
+
+.plan-hazard {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: planHazardPulse 1.1s ease-in-out infinite alternate;
+}
+
+@keyframes planHazardPulse {
+  from { opacity: 0.75; }
+  to   { opacity: 1; }
+}
+
+.plan-hazard-icon {
+  font-size: 26px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+.plan-hazard-label {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-anchor: middle;
+}
+
+/* ---------- people ---------- */
+
+.plan-person.safe {
+  opacity: 0.85;
+}
+
+.plan-person-alert {
+  fill: rgba(223, 65, 65, 0.18);
+  stroke: #df4141;
+  stroke-width: 1.5;
+  animation: planHazardPulse 0.6s infinite alternate;
+}
+
+
+/* ---------- floor tabs ---------- */
+
+.plan-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floor-tabs {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.floor-tab {
+  min-width: 96px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 10px;
+  border: 1px solid #353a3e;
+  border-radius: 5px;
+  background: #181a1c;
+  color: #7c8489;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}
+
+.floor-tab strong {
+  color: #cfd4d6;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.floor-tab:hover {
+  background: #202326;
+  color: #e7eaeb;
+}
+
+.floor-tab.active {
+  border-color: #42cb83;
+  background: #1d2a23;
+  color: #e9f6ee;
+}
+
+/* ---------- stairs, water, waiting ---------- */
+
+.plan-room.stair {
+  fill: #d4d8d5;
+}
+
+.plan-water {
+  fill: #2a8bd6;
+  pointer-events: none;
+  transition: opacity 0.5s;
+}
+
+.plan-stair-badge {
+  fill: #1faa63;
+}
+
+.plan-stair-text {
+  fill: #fff;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+.plan-person-waiting {
+  fill: rgba(59, 130, 196, 0.16);
+  stroke: #3b82c4;
+  stroke-width: 1.5;
+  stroke-dasharray: 3 2;
+}
+
+
+/* ---------- occupants: 4 columns, assisted evacuation ---------- */
+
+.occupant-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.blue-text {
+  color: #4b9be0 !important;
+}
+
+
+/* ==========================================================
+   ALARM BANNER
+========================================================== */
+
+.alarm-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 11px 18px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-align: center;
+  background: #c62828;
+  animation: alarmFlash 0.9s steps(2, jump-none) infinite;
+}
+
+.alarm-icon {
+  font-size: 17px;
+}
+
+.alarm-banner.fire       { background: #c62828; }
+.alarm-banner.flood      { background: #1565c0; }
+.alarm-banner.chemical   { background: #6d8f12; }
+.alarm-banner.earthquake { background: #b26a00; }
+.alarm-banner.security   { background: #8e0f0f; }
+
+.alarm-banner.contained {
+  background: #9a6400;
+  animation: none;
+}
+
+.alarm-banner.verifying {
+  background: #2a2f33;
+  color: #d7dcdf;
+  font-size: 11px;
+  font-weight: 700;
+  animation: verifyingPulse 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes alarmFlash {
+  0%   { filter: brightness(1); }
+  100% { filter: brightness(1.35); }
+}
+
+@keyframes verifyingPulse {
+  from { opacity: 0.6; }
+  to   { opacity: 1; }
+}
+
+
+/* ==========================================================
+   DETECTION LOG
+========================================================== */
+
+.event-log {
+  margin-top: 8px;
+  max-height: 210px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.event-row {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 6px;
+  padding: 5px 6px;
+  border-left: 2px solid #3a4044;
+  border-radius: 2px;
+  background: #1c1f21;
+  font-size: 8.5px;
+  line-height: 1.45;
+  color: #a9b0b4;
+}
+
+.event-row.danger  { border-left-color: #ef4c4c; color: #f3c2c2; }
+.event-row.warning { border-left-color: #f0a33a; color: #f2dcb7; }
+.event-row.success { border-left-color: #42cb83; color: #bfe9d1; }
+
+.event-time {
+  color: #687075;
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* ==========================================================
+   LED STRIPS, SENSORS, THREAT, LOCKED DOORS (2D)
+========================================================== */
+
+.plan-led {
+  pointer-events: none;
+}
+
+.plan-led.off {
+  opacity: 0.22;
+}
+
+.plan-led.lit.green { filter: drop-shadow(0 0 3px #3dff9a); }
+.plan-led.lit.amber { filter: drop-shadow(0 0 3px #ffc23d); }
+.plan-led.lit.red   { filter: drop-shadow(0 0 4px #ff4a4a); }
+
+.plan-door.locked {
+  fill: #f2a13a;
+  stroke: #8a5310;
+}
+
+.plan-lock-icon {
+  font-size: 9px;
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+/* sensor nodes */
+
+.plan-sensor rect {
+  fill: #5f8f75;
+  stroke: #2d4a3a;
+  stroke-width: 1;
+}
+
+.plan-sensor-eye {
+  fill: #e8f5ec;
+}
+
+.plan-sensor.alert rect  { fill: #ffb02e; stroke: #8a5a0a; }
+.plan-sensor.source rect { fill: #ff3b3b; stroke: #7a1010; }
+
+.plan-sensor-ring {
+  fill: none;
+  stroke-width: 1.5;
+  animation: sensorPing 0.9s ease-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.plan-sensor.alert .plan-sensor-ring  { stroke: #ffb02e; }
+.plan-sensor.source .plan-sensor-ring { stroke: #ff3b3b; }
+
+@keyframes sensorPing {
+  from { transform: scale(0.6); opacity: 1; }
+  to   { transform: scale(1.4); opacity: 0; }
+}
+
+/* sealed security zone */
+
+.plan-sealed-zone {
+  fill: rgba(255, 176, 46, 0.12);
+  stroke: #e0951f;
+  stroke-width: 1.5;
+  stroke-dasharray: 5 4;
+  pointer-events: none;
+}
+
+/* moving security threat */
+
+.plan-threat-zone {
+  fill: rgba(255, 60, 60, 0.12);
+  stroke: rgba(255, 60, 60, 0.55);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;
+}
+
+.plan-threat-ring {
+  fill: none;
+  stroke: #ff3b3b;
+  stroke-width: 2;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: sensorPing 1s ease-out infinite;
+}
+
+.plan-threat-head { fill: #3a0d0d; }
+.plan-threat-body { fill: #e23d3d; }
+
+.plan-threat-label {
+  fill: #c62828;
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-anchor: middle;
+}
+
+.plan-threat.contained .plan-threat-zone {
+  fill: rgba(255, 176, 46, 0.12);
+  stroke: rgba(224, 149, 31, 0.6);
+}
+
+.plan-threat.contained .plan-threat-ring { stroke: #e0951f; }
+.plan-threat.contained .plan-threat-label { fill: #a8680a; }
